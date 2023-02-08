@@ -44,7 +44,7 @@ func main() {
 	if kops.GitVersion != "" {
 		gitVersion = fmt.Sprintf(" (git-%s)", kops.GitVersion)
 	}
-	fmt.Printf("nodeup version %s%s\n", kops.Version, gitVersion)
+	fmt.Printf("nodeup version %s.1%s\n", kops.Version, gitVersion)
 	flag.StringVar(&flagConf, "conf", "node.yaml", "configuration location")
 	flag.StringVar(&flagCacheDir, "cache", "/var/cache/nodeup", "the location for the local asset cache")
 	flag.IntVar(&flagRetries, "retries", -1, "maximum number of retries on failure: -1 means retry forever")
