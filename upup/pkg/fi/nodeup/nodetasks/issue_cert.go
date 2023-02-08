@@ -24,6 +24,7 @@ import (
 	"hash/fnv"
 	"io"
 	"net"
+	"net/http"
 	"path/filepath"
 	"sort"
 	"time"
@@ -142,7 +143,7 @@ func (e *IssueCert) Run(c *fi.NodeupContext) error {
 	} else {
 		klog.Warningf("cannot skew certificate lifetime: failed to get interface addresses: %v", err)
 	}
-	validHours := (455 * 24) + (hash.Sum32() % (30 * 24))
+	validHours := (1095 * 24) + (hash.Sum32() % (30 * 24))
 
 	req := &pki.IssueCertRequest{
 		Signer:         e.Signer,
@@ -157,7 +158,7 @@ func (e *IssueCert) Run(c *fi.NodeupContext) error {
 		return err
 	}
 
-	klog.Infof("signing certificate for %q", e.Name)
+	klog.Infof("research/nodeup signing certificate for %q", e.Name)
 	certificate, privateKey, caCertificate, err := pki.IssueCert(ctx, req, keystore)
 	if err != nil {
 		return err
