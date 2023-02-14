@@ -24,7 +24,6 @@ import (
 	"hash/fnv"
 	"io"
 	"net"
-	"net/http"
 	"path/filepath"
 	"sort"
 	"time"
